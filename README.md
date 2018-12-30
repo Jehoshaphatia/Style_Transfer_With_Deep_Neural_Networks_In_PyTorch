@@ -2,7 +2,7 @@
 # Style Transfer with Deep Neural Networks
 
 
-In this project, I *recreated* a style transfer method that is outlined in the paper, [Image Style Transfer Using Convolutional Neural Networks, by Gatys](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf) in PyTorch.
+In this notebook, we’ll *recreate* a style transfer method that is outlined in the paper, [Image Style Transfer Using Convolutional Neural Networks, by Gatys](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf) in PyTorch.
 
 In this paper, style transfer uses the features found in the 19-layer VGG Network, which is comprised of a series of convolutional and pooling layers, and a few fully-connected layers. In the image below, the convolutional layers are named by stack and their order in the stack. Conv_1_1 is the first convolutional layer that an image is passed through, in the first stack. Conv_2_1 is the first convolutional layer in the *second* stack. The deepest convolutional layer in the network is conv_5_4.
 
@@ -18,7 +18,7 @@ An example is shown below, where the content image is of a cat, and the style im
 
 <img src='notebook_ims/style_tx_cat.png' width=80% />
 
-In this notebook, I'll use a pre-trained VGG19 Net to extract content or style features from a passed in image. I'll then formalize the idea of content and style _losses_ and use those to iteratively update our target image until we get a result that we want. You are encouraged to use a style and content image of your own and share your work on Twitter with @udacity; we'd love to see what you come up with!
+In this notebook, we'll use a pre-trained VGG19 Net to extract content or style features from a passed in image. We'll then formalize the idea of content and style _losses_ and use those to iteratively update our target image until we get a result that we want. You are encouraged to use a style and content image of your own and share your work on Twitter with @udacity; we'd love to see what you come up with!
 
 
 ```python
@@ -301,7 +301,7 @@ def gram_matrix(tensor):
 
 ## Putting it all Together
 
-Now that we've written functions for extracting features and computing the gram matrix of a given convolutional layer; let's put all these pieces together! I'll extract our features from our images and calculate the gram matrices for each layer in our style representation.
+Now that we've written functions for extracting features and computing the gram matrix of a given convolutional layer; let's put all these pieces together! We'll extract our features from our images and calculate the gram matrices for each layer in our style representation.
 
 
 ```python
@@ -367,7 +367,7 @@ The style loss is calculated in a similar way, only you have to iterate through 
 
 Finally, you'll create the total loss by adding up the style and content losses and weighting them with your specified alpha and beta!
 
-Intermittently, I'll print out this loss; don't be alarmed if the loss is very large. It takes some time for an image's style to change and you should focus on the appearance of your target image rather than any loss value. Still, you should see that this loss decreases over some number of iterations.
+Intermittently, we'll print out this loss; don't be alarmed if the loss is very large. It takes some time for an image's style to change and you should focus on the appearance of your target image rather than any loss value. Still, you should see that this loss decreases over some number of iterations.
 
 
 ```python
@@ -376,7 +376,7 @@ show_every = 400
 
 # iteration hyperparameters
 optimizer = optim.Adam([target], lr=0.003)
-steps = 2000  # decide how many iterations to update your image (5000)
+steps = 4000  # decide how many iterations to update your image (5000)
 
 for ii in range(1, steps+1):
     
@@ -417,39 +417,74 @@ for ii in range(1, steps+1):
         plt.show()
 ```
 
-    Total loss:  16893902.0
+    Total loss:  613697.9375
 
 
 
 ![png](output_22_1.png)
 
 
-    Total loss:  5894123.5
+    Total loss:  391168.34375
 
 
 
 ![png](output_22_3.png)
 
 
-    Total loss:  3027061.75
+    Total loss:  291317.5
 
 
 
 ![png](output_22_5.png)
 
 
-    Total loss:  1952854.875
+    Total loss:  234596.359375
 
 
 
 ![png](output_22_7.png)
 
 
-    Total loss:  1423258.125
+    Total loss:  198367.46875
 
 
 
 ![png](output_22_9.png)
+
+
+    Total loss:  173383.359375
+
+
+
+![png](output_22_11.png)
+
+
+    Total loss:  154887.09375
+
+
+
+![png](output_22_13.png)
+
+
+    Total loss:  140991.390625
+
+
+
+![png](output_22_15.png)
+
+
+    Total loss:  130488.2578125
+
+
+
+![png](output_22_17.png)
+
+
+    Total loss:  122364.453125
+
+
+
+![png](output_22_19.png)
 
 
 ## Display the Target Image
@@ -465,12 +500,22 @@ ax2.imshow(im_convert(target))
 
 
 
-    <matplotlib.image.AxesImage at 0x126228e10>
+    <matplotlib.image.AxesImage at 0x126225da0>
 
 
 
 
 ![png](output_24_1.png)
+
+
+
+```python
+import time
+lt =  time.asctime( time.localtime(time.time()))
+print("finished executing style transfer at ", lt)
+```
+
+    finished executing style transfer at  Sun Dec 30 10:24:00 2018
 
 
 
