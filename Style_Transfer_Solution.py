@@ -249,7 +249,7 @@ steps = 4000  # here I can decide how many iterations to update my image (5000)
 
 for ii in range(1, steps+1):
     
-    # get the features from your target image
+    # get the features from my target image
     target_features = get_features(target, vgg)
     
     # the content loss
@@ -274,7 +274,7 @@ for ii in range(1, steps+1):
     # calculate the *total* loss
     total_loss = content_weight * content_loss + style_weight * style_loss
     
-    # update your target image
+    # update my target image
     optimizer.zero_grad()
     total_loss.backward()
     optimizer.step()
@@ -288,16 +288,11 @@ for ii in range(1, steps+1):
 
 # ## Display the Target Image
 
-# In[15]:
-
-
 # display content and final, target image
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
 ax1.imshow(im_convert(content))
 ax2.imshow(im_convert(target))
 
-
-# In[ ]:
 
 
 
