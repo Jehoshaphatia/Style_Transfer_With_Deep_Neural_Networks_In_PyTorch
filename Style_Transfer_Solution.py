@@ -292,8 +292,3 @@ for ii in range(1, steps+1):
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
 ax1.imshow(im_convert(content))
 ax2.imshow(im_convert(target))
-
-
-
-
-
