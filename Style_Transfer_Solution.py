@@ -245,7 +245,7 @@ show_every = 400
 
 # iteration hyperparameters
 optimizer = optim.Adam([target], lr=0.003)
-steps = 000  # here I can decide how many iterations to update my image (5000)
+steps = 4000  # here I can decide how many iterations to update my image (5000)
 
 for ii in range(1, steps+1):
     
