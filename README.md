@@ -515,4 +515,4 @@ print("finished executing style transfer at ", local_time)
 ```python
 
 ```
-Updating the Target & Calculating Losses took almost 8 hours. I started on Sun Dec 30 at 02:30:15 2018 and the target image came out on Sun Dec 30 at 10:24:00 2018
+Updating the Target & Calculating Losses took almost 8 hours. I started on Sun Dec 30 at 02:30:15 2018 and the target image came out on Sun Dec 30 at 10:24:00 2018.
