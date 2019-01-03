@@ -295,7 +295,7 @@ ax2.imshow(im_convert(target))
 
 # #### Calculate Time
 
-# calculate the current local time
+# calculate the current local time.
 import time
 local_time =  time.asctime( time.localtime(time.time()))
 print("finished executing style transfer at ", local_time)
